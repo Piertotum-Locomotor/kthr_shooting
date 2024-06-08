@@ -4,25 +4,3 @@ public class Main {
         x.debug();
     }
 }
-
-// テストメッセージ
-
-interface GameObject {
-    static GameObject create(/* */) {
-        return new GameObjectImpl();
-    }
-
-    void debug();
-}
-
-class GameObjectImpl implements GameObject {
-    // private double ...
-
-    GameObjectImpl(/* */) {
-        // ...
-    }
-
-    public void debug() {
-        System.out.println("test");
-    }
-}
