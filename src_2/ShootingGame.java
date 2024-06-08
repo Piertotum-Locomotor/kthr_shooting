@@ -1,7 +1,6 @@
 public class ShootingGame {
     public static void main(String[] args) {
         GameObject x = new Test(10);
-        GameObject y = new Character(100);
         System.out.println(x.a);
     }
 }
