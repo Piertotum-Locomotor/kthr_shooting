@@ -9,6 +9,8 @@ public class Main {
     }
 }
 
+// テストメッセージ
+
 interface ComplexNumber {
     static ComplexNumber create(double real0, double imag0) {
         return new ComplexNumberImpl(real0, imag0);
