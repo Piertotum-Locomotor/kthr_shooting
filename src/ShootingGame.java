@@ -1,8 +1,8 @@
 public class ShootingGame {
     public static void main(String[] args) {
-        GameObject x = new AAA(10);
-        System.err.println(x.a);
-        x.print();
+        GameObject x = new Test(10);
+        GameObject y = new Character(100);
+        System.out.println(x.a);
     }
 }
 
@@ -11,11 +11,40 @@ abstract class GameObject {
     GameObject(int a0) {
         a = a0;
     }
-    abstract void print();
 }
 
-class AAA extends GameObject {
-    AAA(int a0) {
+class Character extends GameObject {
+    Character(int a0) {
+        super(a0);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Test extends GameObject {
+    Test(int a0) {
         super(a0);
     }
 
