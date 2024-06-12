@@ -3,13 +3,13 @@ import java.awt.*;
 
 import gameobject.character.Character;
 
-class Bullet extends GameObject {
-    private Character ownedBy;
-    private Character damageTo;
+public class Bullet extends GameObject {
+    private Class<? extends Character> ownedBy;
+    private Class<? extends Character> damageTo;
     private Double offence;
     private Double velocity;
     
-    public Bullet(int x, int y, int size, Character ownedBy, Character damageTo, double offence, double velocity) {
+    public Bullet(int x, int y, int size, Class<? extends Character> ownedBy, Class<? extends Character> damageTo, double offence, double velocity) {
         super(x, y, size);
         setOwnedBy(ownedBy);
         setDamageTo(damageTo);
@@ -17,11 +17,11 @@ class Bullet extends GameObject {
         setVelocity(velocity);
     }
 
-    Character whomOwnedBy() {
+    Class<? extends Character> whomOwnedBy() {
         return ownedBy;
     }
 
-    Character whomDamageTo() {
+    Class<? extends Character> whomDamageTo() {
         return damageTo;
     }
 
@@ -33,11 +33,11 @@ class Bullet extends GameObject {
         return velocity;
     }
 
-    void setOwnedBy(Character ownedBy) {
+    void setOwnedBy(Class<? extends Character> ownedBy) {
         this.ownedBy = ownedBy;
     }
 
-    void setDamageTo(Character damageTo) {
+    void setDamageTo(Class<? extends Character> damageTo) {
         this.damageTo = damageTo;
     }
 

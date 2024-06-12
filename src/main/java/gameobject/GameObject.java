@@ -58,5 +58,10 @@ public abstract class GameObject {
         isAlive = !(isAlive);
     }
 
+    public void move(int newX, int newY) {
+        setCoordinateX(newX);
+        setCoordinateY(newY);
+    }
+
     abstract public void draw(Graphics g);
 }

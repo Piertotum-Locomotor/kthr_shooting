@@ -38,8 +38,5 @@ public abstract class Character extends GameObject {
         this.bulletVelocity = bulletVelocity;
     }
 
-    public void move(int newX, int newY) {
-        setCoordinateX(newX);
-        setCoordinateY(newY);
-    }
+    protected abstract void shoot(Character damageTo, double offense, double velocity);
 }

@@ -1,6 +1,8 @@
 package gameobject.character.player;
 
 import gameobject.character.Character;
+import gameobject.character.enemy.Enemy;
+import gameobject.*;
 
 import java.awt.*;
 
@@ -18,6 +20,10 @@ public class Player extends Character {
 
     public void setRemaining(int remaining) {
         this.remaining = remaining;
+    }
+
+    protected void shoot(Character damageTo, double offense, double velocity) {
+        Bullet bullet = new Bullet(super.getCoordinateX(), super.getCoordinateY(), super.getSize(), Player.class, Enemy.class, super.getBulletOffence(), super.getBulletVelocity());
     }
 
     public void draw(Graphics g) {
