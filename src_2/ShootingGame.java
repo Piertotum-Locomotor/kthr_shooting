@@ -5,6 +5,9 @@ public class ShootingGame {
     }
 }
 
+//わーーーーーーーーーーーーーーーーーーー
+
+
 abstract class GameObject {
     int a;
     GameObject(int a0) {
