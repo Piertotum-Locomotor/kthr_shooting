@@ -7,15 +7,46 @@ abstract class GameObject {
     Boolean isAlive;
     int size;
 
-    abstract Boolean getIsMovable();
-    abstract int getCoordinateX();
-    abstract int getCoordinateY();
-    abstract Boolean getIsAlive();
-    abstract int getSize();
+    Boolean getIsMovable() {
+        return isMovable;
+    }
 
-    abstract void setIsMovable();
-    abstract void setCoordinateX();
-    abstract void setCoordinateY();
-    abstract void setIsAlive();
-    abstract void setSize();
+    int getCoordinateX() {
+        return coordinateX;
+    }
+
+    int getCoordinateY() {
+        return coordinateY;
+    }
+
+    Boolean getIsAlive() {
+        return isAlive;
+    }
+
+    int getSize() {
+        return size;
+    }
+
+    void setIsMovable(Boolean isMovable) {
+        this.isMovable = isMovable;
+    }
+    void setCoordinateX(int coordinateX) {
+        this.coordinateX = coordinateX;
+    }
+
+    void setCoordinateY(int coordinateY) {
+        this.coordinateY = coordinateY;
+    }
+
+    void setIsAlive(boolean isAlive) {
+        this.isAlive = isAlive;
+    }
+    
+    void setSize(int size) {
+        this.size = size;
+    }
+
+    void toggleIsAlive() {
+        isAlive = !(isAlive);
+    }
 }
