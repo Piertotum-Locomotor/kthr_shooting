@@ -1,6 +1,6 @@
 package main;
 
-public class Player extends Character{
+public class Player extends Character {
     int remaining;
     String getName(){
         return super.name;
@@ -14,8 +14,8 @@ public class Player extends Character{
     void setName(String name){
         super.name = name;
     }
-    void setBulletOffence(Double nulletOffence){
-        super.bulletOffence = nulletOffence;
+    void setBulletOffence(Double bulletOffence){
+        super.bulletOffence = bulletOffence;
     }
     void setBulletVelocity(Double bulletVelocity){
         super.bulletVelocity = bulletVelocity;
