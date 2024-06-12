@@ -1,27 +1,24 @@
 package gameobject.ui;
 
-import gameobject.character.player.Player;
-import gameobject.GameObject;
-import gameobject.character.enemy.Boss;
-
 import javax.swing.*;
+
+import GameRegistrer.GameRegistrer;
+import gameobject.GameObject;
+import gameobject.character.Character;
 
 import java.awt.*;
 import java.awt.event.*;
 
 public class GamePanel extends JPanel {
-    private GameObject objects[] = new GameObject[1024];
+    
 
     public GamePanel() {
-        objects[0] = new Player(10, 100, 10, "PLAYER", 10, 5); // 初期位置（仮）
-        objects[1] = new Boss(500, 500, 20, "BOSS", 20, 10);
-
         addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
                 int x = e.getX();
                 int y = e.getY();
-                objects[0].move(x, y);
+                GameRegistrer.getObjects().get(0).move(x, y);   //プレイヤー
                 repaint();
             }
         });
@@ -30,7 +27,21 @@ public class GamePanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        objects[0].draw(g);
-        objects[1].draw(g);
+
+        for (int i = 0; i < GameRegistrer.getObjects().size(); i++) {
+            GameObject evaluating = GameRegistrer.getObjects().get(i);
+
+            evaluating.move(evaluating.getCoordinateX() + evaluating.getVelocityX(), evaluating.getCoordinateY() + evaluating.getVelocityY());
+            evaluating.draw(g);
+
+            // Characterを扱っているなら
+            if (evaluating instanceof Character) {
+                Character evalChara = (Character)evaluating;
+
+                if (true) {
+                    evalChara.shoot(10, 10);
+                }
+            }
+        }
     }
 }

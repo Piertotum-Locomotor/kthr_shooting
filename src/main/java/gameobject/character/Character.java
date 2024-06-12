@@ -5,13 +5,15 @@ import gameobject.GameObject;
 public abstract class Character extends GameObject {
     private String name;
     private double bulletOffence;
-    private double bulletVelocity;
+    private int bulletVelocityX;
+    private int bulletVelocityY;
 
-    public Character(int x, int y, int size, String name, double bulletOffence, double bulletVelocity) {
-        super(x, y, size);
+    public Character(int x, int y, int size, String name, double bulletOffence, int bulletVelocityX, int bulletVelocityY) {
+        super(x, y, size, 0, 0);
         setName(name);
         setBulletOffence(bulletOffence);
-        setBulletVelocity(bulletVelocity);
+        setBulletVelocityX(bulletVelocityX);
+        setBulletVelocityY(bulletVelocityY);
     }
 
     public String getName(){
@@ -22,8 +24,12 @@ public abstract class Character extends GameObject {
         return bulletOffence;
     }
 
-    public double getBulletVelocity(){
-        return bulletVelocity;
+    public int getBulletVelocityX(){
+        return bulletVelocityX;
+    }
+
+    public int getBulletVelocityY(){
+        return bulletVelocityY;
     }
     
     public void setName(String name){
@@ -34,9 +40,13 @@ public abstract class Character extends GameObject {
         this.bulletOffence = bulletOffence;
     }
 
-    public void setBulletVelocity(Double bulletVelocity){
-        this.bulletVelocity = bulletVelocity;
+    public void setBulletVelocityX(int bulletVelocityX){
+        this.bulletVelocityX = bulletVelocityX;
     }
 
-    protected abstract void shoot(Character damageTo, double offense, double velocity);
+    public void setBulletVelocityY(int bulletVelocityY){
+        this.bulletVelocityY = bulletVelocityY;
+    }
+
+    public abstract void shoot(double offense, double velocity);
 }

@@ -6,15 +6,13 @@ import gameobject.character.Character;
 public class Bullet extends GameObject {
     private Class<? extends Character> ownedBy;
     private Class<? extends Character> damageTo;
-    private Double offence;
-    private Double velocity;
+    private double offence;
     
-    public Bullet(int x, int y, int size, Class<? extends Character> ownedBy, Class<? extends Character> damageTo, double offence, double velocity) {
-        super(x, y, size);
+    public Bullet(int x, int y, int size, int velocityX, int velocityY, Class<? extends Character> ownedBy, Class<? extends Character> damageTo, double offence) {
+        super(x, y, size, velocityX, velocityY);
         setOwnedBy(ownedBy);
         setDamageTo(damageTo);
         setOffence(offence);
-        setVelocity(velocity);
     }
 
     Class<? extends Character> whomOwnedBy() {
@@ -29,10 +27,6 @@ public class Bullet extends GameObject {
         return offence;
     }
 
-    double getVelocity() {
-        return velocity;
-    }
-
     void setOwnedBy(Class<? extends Character> ownedBy) {
         this.ownedBy = ownedBy;
     }
@@ -43,10 +37,6 @@ public class Bullet extends GameObject {
 
     void setOffence(double offence) {
         this.offence = offence;
-    }
-
-    void setVelocity(double velocity) {
-        this.velocity = velocity;
     }
 
     //仮だよ

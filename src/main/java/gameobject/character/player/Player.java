@@ -6,11 +6,13 @@ import gameobject.*;
 
 import java.awt.*;
 
+import GameRegistrer.GameRegistrer;
+
 public class Player extends Character {
     private int remaining;
 
-    public Player(int x, int y, int size, String name, double bulletOffence, double bulletVelocity) {
-        super(x, y, size, name, bulletOffence, bulletVelocity);
+    public Player(int x, int y, int size, String name, int bulletOffence, int bulletVelocityX, int bulletVelocityY) {
+        super(x, y, size, name, bulletOffence, bulletVelocityX, bulletVelocityY);
         setRemaining(remaining);
     }
 
@@ -22,8 +24,9 @@ public class Player extends Character {
         this.remaining = remaining;
     }
 
-    protected void shoot(Character damageTo, double offense, double velocity) {
-        Bullet bullet = new Bullet(super.getCoordinateX(), super.getCoordinateY(), super.getSize(), Player.class, Enemy.class, super.getBulletOffence(), super.getBulletVelocity());
+    public void shoot(double offense, double velocity) {
+        Bullet bullet = new Bullet(super.getCoordinateX(), super.getCoordinateY(), super.getSize(), super.getBulletVelocityX(), super.getBulletVelocityY(), Player.class, Enemy.class, super.getBulletOffence());
+        GameRegistrer.gameRegisterer(bullet);
     }
 
     public void draw(Graphics g) {

@@ -7,11 +7,15 @@ public abstract class GameObject {
     private int coordinateY;
     private Boolean isAlive;
     private int size;
+    private int velocityX;
+    private int velocityY;
 
-    public GameObject(int x, int y, int size) {
+    public GameObject(int x, int y, int size, int velocityX, int velocityY) {
         setCoordinateX(x);
         setCoordinateY(y);
         setSize(size);
+        setVelocityX(velocityX);
+        setVelocityY(velocityY);
     }
 
     Boolean getIsMovable() {
@@ -34,7 +38,15 @@ public abstract class GameObject {
         return size;
     }
 
-    void setIsMovable(Boolean isMovable) {
+    public int getVelocityX() {
+        return velocityX;
+    }
+
+    public int getVelocityY() {
+        return velocityY;
+    }
+
+    public void setIsMovable(Boolean isMovable) {
         this.isMovable = isMovable;
     }
 
@@ -46,15 +58,23 @@ public abstract class GameObject {
         this.coordinateY = coordinateY;
     }
 
-    void setIsAlive(boolean isAlive) {
+    public void setIsAlive(boolean isAlive) {
         this.isAlive = isAlive;
     }
     
-    void setSize(int size) {
+    public void setSize(int size) {
         this.size = size;
     }
 
-    void toggleIsAlive() {
+    public void setVelocityX(int velocityX) {
+        this.velocityX = velocityX;
+    }
+
+    public void setVelocityY(int velocityY) {
+        this.velocityY = velocityY;
+    }
+
+    public void toggleIsAlive() {
         isAlive = !(isAlive);
     }
 

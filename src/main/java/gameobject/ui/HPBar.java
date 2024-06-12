@@ -7,7 +7,7 @@ class HPBar extends GameObject {
     private double value;
 
     public HPBar(int x, int y, int size, double value) {
-        super(x, y, size);
+        super(x, y, size, 0, 0);
         setValue(value);
     }
 

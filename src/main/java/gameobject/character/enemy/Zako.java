@@ -1,17 +1,21 @@
 package gameobject.character.enemy;
 
-import gameobject.character.Character;
+import gameobject.Bullet;
+import gameobject.character.player.Player;
 
 import java.awt.*;
 
-public class Zako extends Enemy{
+import GameRegistrer.GameRegistrer;
 
-    public Zako(int x, int y, int size, String name, double bulletOffence, double bulletVelocity) {
-        super(x, y, size, name, bulletOffence, bulletVelocity);
+public class Zako extends Enemy {
+
+    public Zako(int x, int y, int size, String name, double bulletOffence, int bulletVelocityX, int bulletVelocityY) {
+        super(x, y, size, name, bulletOffence, bulletVelocityX, bulletVelocityY);
     }
 
-    protected void shoot(Character damageTo, double offense, double velocity) {
-        
+    public void shoot(double offense, double velocity) {
+        Bullet bullet = new Bullet(super.getCoordinateX(), super.getCoordinateY(), super.getSize(), super.getBulletVelocityX(), super.getBulletVelocityY(), Zako.class, Player.class, super.getBulletOffence());
+        GameRegistrer.gameRegisterer(bullet);
     }
 
     //仮だよ
