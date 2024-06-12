@@ -3,8 +3,8 @@ import java.awt.*;
 
 public class Zako extends Enemy{
 
-    public Zako(int x, int y, int size) {
-        super(x, y, size);
+    public Zako(int x, int y, int size, String name, double bulletOffence, double bulletVelocity) {
+        super(x, y, size, name, bulletOffence, bulletVelocity);
     }
 
     //仮だよ

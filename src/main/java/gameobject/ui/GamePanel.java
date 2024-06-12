@@ -11,7 +11,8 @@ public class GamePanel extends JPanel {
     private Player player;
 
     public GamePanel() {
-        player = new Player(10, 100, 10); // 初期位置（仮）
+        player = new Player(10, 100, 10, "PLAYER", 10, 5); // 初期位置（仮）
+
         addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {

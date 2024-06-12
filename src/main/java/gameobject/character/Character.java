@@ -7,9 +7,11 @@ public abstract class Character extends GameObject {
     private double bulletOffence;
     private double bulletVelocity;
 
-    //仮
-    public Character(int x, int y, int size) {
+    public Character(int x, int y, int size, String name, double bulletOffence, double bulletVelocity) {
         super(x, y, size);
+        setName(name);
+        setBulletOffence(bulletOffence);
+        setBulletVelocity(bulletVelocity);
     }
 
     public String getName(){

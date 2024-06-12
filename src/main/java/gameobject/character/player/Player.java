@@ -5,11 +5,19 @@ import gameobject.character.Character;
 import java.awt.*;
 
 public class Player extends Character {
-    int remaining;
+    private int remaining;
 
-    //仮
-    public Player(int x, int y, int size) {
-        super(x, y, size);
+    public Player(int x, int y, int size, String name, double bulletOffence, double bulletVelocity) {
+        super(x, y, size, name, bulletOffence, bulletVelocity);
+        setRemaining(remaining);
+    }
+
+    public int getRemaining() {
+        return remaining;
+    }
+
+    public void setRemaining(int remaining) {
+        this.remaining = remaining;
     }
 
     public void draw(Graphics g) {

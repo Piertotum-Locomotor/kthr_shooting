@@ -3,8 +3,8 @@ import java.awt.*;
 
 public class Boss extends Enemy {
 
-    public Boss(int x, int y, int size) {
-        super(x, y, size);
+    public Boss(int x, int y, int size, String name, double bulletOffence, double bulletVelocity) {
+        super(x, y, size, name, bulletOffence, bulletVelocity);
     }
 
     //仮だよ

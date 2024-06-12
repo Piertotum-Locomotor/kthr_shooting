@@ -6,9 +6,8 @@ abstract public class Enemy extends Character {
     int health;
     Double velocity;
 
-    //仮
-    public Enemy(int x, int y, int size) {
-        super(x, y, size);
+    public Enemy(int x, int y, int size, String name, double bulletOffence, double bulletVelocity) {
+        super(x, y, size, name, bulletOffence, bulletVelocity);
     }
 }
 
