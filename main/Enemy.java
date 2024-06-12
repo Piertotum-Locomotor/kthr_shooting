@@ -1,6 +1,3 @@
-package main;
-
-
 abstract public class Enemy extends Character {
     int health;
     Double velocity;

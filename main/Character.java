@@ -1,5 +1,3 @@
-package main;
-
 abstract class Character extends GameObject {
     String name;
     double bulletOffence;

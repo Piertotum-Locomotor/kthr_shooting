@@ -1,5 +1,3 @@
-package main;
-
 import java.awt.*;
 
 class HPBar extends GameObject {

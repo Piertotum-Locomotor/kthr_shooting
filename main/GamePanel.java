@@ -1,14 +1,12 @@
-package main;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 class GamePanel extends JPanel {
-    private main.Player player;
+    private Player player;
 
     public GamePanel() {
-        player = new Player(10, 100, 100); // 初期位置（仮）
+        player = new Player(10, 100, 10); // 初期位置（仮）
         addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {

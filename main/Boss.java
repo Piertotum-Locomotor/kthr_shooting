@@ -1,8 +1,6 @@
-package main;
-
 import java.awt.*;
 
-public class Boss extends Enemy{
+public class Boss extends Enemy {
 
     public Boss(int x, int y, int size) {
         super(x, y, size);
