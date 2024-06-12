@@ -1,5 +1,7 @@
 import javax.swing.JFrame;
 
+import gameobject.ui.GamePanel;
+
 public class Main {
     
     public static void main(String[] args) {

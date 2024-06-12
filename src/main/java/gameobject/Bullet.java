@@ -1,4 +1,7 @@
+package gameobject;
 import java.awt.*;
+
+import gameobject.character.Character;
 
 class Bullet extends GameObject {
     private Character ownedBy;

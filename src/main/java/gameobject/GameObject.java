@@ -1,6 +1,7 @@
+package gameobject;
 import java.awt.*;
 
-abstract class GameObject {
+public abstract class GameObject {
     private Boolean isMovable = true;
     private int coordinateX;
     private int coordinateY;
@@ -17,19 +18,19 @@ abstract class GameObject {
         return isMovable;
     }
 
-    int getCoordinateX() {
+    public int getCoordinateX() {
         return coordinateX;
     }
 
-    int getCoordinateY() {
+    public int getCoordinateY() {
         return coordinateY;
     }
 
-    Boolean getIsAlive() {
+    public Boolean getIsAlive() {
         return isAlive;
     }
 
-    int getSize() {
+    public int getSize() {
         return size;
     }
 
@@ -37,11 +38,11 @@ abstract class GameObject {
         this.isMovable = isMovable;
     }
 
-    void setCoordinateX(int coordinateX) {
+    public void setCoordinateX(int coordinateX) {
         this.coordinateX = coordinateX;
     }
 
-    void setCoordinateY(int coordinateY) {
+    public void setCoordinateY(int coordinateY) {
         this.coordinateY = coordinateY;
     }
 

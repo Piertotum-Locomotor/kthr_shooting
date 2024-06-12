@@ -1,8 +1,13 @@
+package gameobject.ui;
+
+import gameobject.character.player.Player;
+
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 
-class GamePanel extends JPanel {
+public class GamePanel extends JPanel {
     private Player player;
 
     public GamePanel() {
