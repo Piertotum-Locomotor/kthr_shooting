@@ -1,5 +1,5 @@
 package main;
 
-public class GameObject {
+public class GameObject{
     
 }
