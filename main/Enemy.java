@@ -1,6 +1,7 @@
 package main;
 
-public class Enemy{
+public class Enemy extends Character {
     int health;
     Double velocity;
 }
+
