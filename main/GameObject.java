@@ -1,11 +1,19 @@
 package main;
 
+import java.awt.*;
+
 abstract class GameObject {
     private Boolean isMovable = true;
     private int coordinateX;
     private int coordinateY;
     private Boolean isAlive;
     private int size;
+
+    public GameObject(int x, int y, int size) {
+        setCoordinateX(x);
+        setCoordinateY(y);
+        setSize(size);
+    }
 
     Boolean getIsMovable() {
         return isMovable;
@@ -30,7 +38,7 @@ abstract class GameObject {
     void setIsMovable(Boolean isMovable) {
         this.isMovable = isMovable;
     }
-    
+
     void setCoordinateX(int coordinateX) {
         this.coordinateX = coordinateX;
     }
@@ -50,4 +58,6 @@ abstract class GameObject {
     void toggleIsAlive() {
         isAlive = !(isAlive);
     }
+
+    abstract public void draw(Graphics g);
 }
