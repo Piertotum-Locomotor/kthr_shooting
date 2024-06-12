@@ -9,7 +9,7 @@ abstract class Character extends GameObject {
     abstract double getBulletOffece();
     abstract double getBulletVelocity();
 
-    abstract void setName();
-    abstract void setBulletOffece();
-    abstract void setBulletVelocity();
+    abstract void setName(String name);
+    abstract void setBulletOffece(Double bulletOffence);
+    abstract void setBulletVelocity(Double bulletVelocity);
 }
