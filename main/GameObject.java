@@ -1,11 +1,11 @@
 package main;
 
 abstract class GameObject {
-    Boolean isMovable = true;
-    int coordinateX;
-    int coordinateY;
-    Boolean isAlive;
-    int size;
+    private Boolean isMovable = true;
+    private int coordinateX;
+    private int coordinateY;
+    private Boolean isAlive;
+    private int size;
 
     Boolean getIsMovable() {
         return isMovable;
@@ -30,6 +30,7 @@ abstract class GameObject {
     void setIsMovable(Boolean isMovable) {
         this.isMovable = isMovable;
     }
+    
     void setCoordinateX(int coordinateX) {
         this.coordinateX = coordinateX;
     }
