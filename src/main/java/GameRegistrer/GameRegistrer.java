@@ -11,6 +11,10 @@ public class GameRegistrer {
         objects.add(Instance);
     }
 
+    public static void removeFromRegistery(GameObject Instance) {
+        objects.remove(Instance);
+    }
+
     public static ArrayList<GameObject> getObjects() {
         return objects;
     }

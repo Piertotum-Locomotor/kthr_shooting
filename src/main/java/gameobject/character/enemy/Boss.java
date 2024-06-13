@@ -9,19 +9,31 @@ import GameRegistrer.GameRegistrer;
 
 public class Boss extends Enemy {
 
-    public Boss(int x, int y, int size, String name, double bulletOffence, int bulletVelocityX, int bulletVelocityY) {
-        super(x, y, size, name, bulletOffence, bulletVelocityX, bulletVelocityY);
+    public Boss(int x, int y, int size, Color color, String name, double bulletOffence, int bulletVelocityX, int bulletVelocityY, int shootInterval) {
+        super(x, y, size, color, name, bulletOffence, bulletVelocityX, bulletVelocityY, shootInterval);
     }
 
-    public void shoot(double offense, double velocity) {
-        Bullet bullet = new Bullet(super.getCoordinateX(), super.getCoordinateY(), super.getSize(), super.getBulletVelocityX(), super.getBulletVelocityY(), Boss.class, Player.class, super.getBulletOffence());
+    public void shoot() {
+        Bullet bullet = new Bullet(super.getCoordinateX(), super.getCoordinateY(), super.getSize()/2, super.getBulletVelocityX(), super.getBulletVelocityY(), super.getColor(), Boss.class, Player.class, super.getBulletOffence());
         GameRegistrer.gameRegisterer(bullet);
     }
 
     //仮だよ
     public void draw(Graphics g) {
-        g.setColor(Color.RED);
+        g.setColor(super.getColor());
         g.fillRect(super.getCoordinateX() - super.getSize() / 2, super.getCoordinateY() - super.getSize() / 2, super.getSize(), super.getSize());
     }
 
+    public void task() {
+
+        setIsShooting(true);
+
+        if (getTimer() % getShootInterval() == 0) {
+            setTimer(0);
+
+            if (getIsShooting()) {
+                shoot();
+            }
+        }
+    }
 }

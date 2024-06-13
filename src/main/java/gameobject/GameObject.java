@@ -9,13 +9,17 @@ public abstract class GameObject {
     private int size;
     private int velocityX;
     private int velocityY;
+    private int timer;
+    private Color color;
 
-    public GameObject(int x, int y, int size, int velocityX, int velocityY) {
+    public GameObject(int x, int y, int size, int velocityX, int velocityY, Color color) {
         setCoordinateX(x);
         setCoordinateY(y);
         setSize(size);
         setVelocityX(velocityX);
         setVelocityY(velocityY);
+        setColor(color);
+        setTimer(0);
     }
 
     Boolean getIsMovable() {
@@ -78,10 +82,32 @@ public abstract class GameObject {
         isAlive = !(isAlive);
     }
 
+    public int getTimer() {
+        return timer;
+    }
+
+    public void setTimer(int timer) {
+        this.timer = timer;
+    }
+
+    public void incrementTimer() {
+        timer++;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     public void move(int newX, int newY) {
         setCoordinateX(newX);
         setCoordinateY(newY);
     }
 
     abstract public void draw(Graphics g);
+
+    abstract public void task();
 }

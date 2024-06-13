@@ -6,8 +6,8 @@ import gameobject.GameObject;
 class HPBar extends GameObject {
     private double value;
 
-    public HPBar(int x, int y, int size, double value) {
-        super(x, y, size, 0, 0);
+    public HPBar(int x, int y, int size, Color color, double value) {
+        super(x, y, size, 0, 0, color);
         setValue(value);
     }
 
@@ -23,5 +23,9 @@ class HPBar extends GameObject {
     public void draw(Graphics g) {
         g.setColor(Color.RED);
         g.fillRect(super.getCoordinateX() - super.getSize() / 2, super.getCoordinateY() - super.getSize() / 2, super.getSize(), super.getSize());
+    }
+
+    public void task() {
+
     }
 }

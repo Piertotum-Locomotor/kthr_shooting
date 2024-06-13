@@ -2,18 +2,24 @@ package gameobject.character;
 
 import gameobject.GameObject;
 
+import java.awt.*;
+
 public abstract class Character extends GameObject {
     private String name;
     private double bulletOffence;
     private int bulletVelocityX;
     private int bulletVelocityY;
+    private Boolean isShooting;
+    private int shootInterval;
 
-    public Character(int x, int y, int size, String name, double bulletOffence, int bulletVelocityX, int bulletVelocityY) {
-        super(x, y, size, 0, 0);
+    public Character(int x, int y, int size, Color color, String name, double bulletOffence, int bulletVelocityX, int bulletVelocityY, int shootInterval) {
+        super(x, y, size, 0, 0, color);
         setName(name);
         setBulletOffence(bulletOffence);
         setBulletVelocityX(bulletVelocityX);
         setBulletVelocityY(bulletVelocityY);
+        setIsShooting(false);
+        setShootInterval(shootInterval);
     }
 
     public String getName(){
@@ -48,5 +54,25 @@ public abstract class Character extends GameObject {
         this.bulletVelocityY = bulletVelocityY;
     }
 
-    public abstract void shoot(double offense, double velocity);
+    public Boolean getIsShooting() {
+        return isShooting;
+    }
+
+    public void setIsShooting(Boolean isShooting) {
+        this.isShooting = isShooting;
+    }
+
+    public void toggleShoot() {
+        isShooting = !isShooting;
+    }
+
+    public int getShootInterval() {
+        return shootInterval;
+    }
+
+    public void setShootInterval(int shootInterval) {
+        this.shootInterval = shootInterval;
+    }
+
+    public abstract void shoot();
 }
