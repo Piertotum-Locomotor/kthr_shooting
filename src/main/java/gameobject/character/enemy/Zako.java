@@ -9,8 +9,8 @@ import GameRegistrer.GameRegistrer;
 
 public class Zako extends Enemy {
 
-    public Zako(int x, int y, int size, Color color, String name, double bulletOffence, int bulletVelocityX, int bulletVelocityY, int shootInterval) {
-        super(x, y, size, color, name, bulletOffence, bulletVelocityX, bulletVelocityY, shootInterval);
+    public Zako(int x, int y, int size, Color color, String name, double bulletOffence, int bulletVelocityX, int bulletVelocityY, int shootInterval, int health) {
+        super(x, y, size, color, name, bulletOffence, bulletVelocityX, bulletVelocityY, shootInterval, health);
     }
 
     public void shoot() {
@@ -25,9 +25,19 @@ public class Zako extends Enemy {
     }
     
     public void task() {
-        if (getTimer() % 10 == 0 && getIsShooting()) {
+        setIsShooting(true);
+
+        if (getTimer() % getShootInterval() == 0) {
             setTimer(0);
-            shoot();
+
+            if (getIsShooting()) {
+                shoot();
+            }
+        }
+
+
+        if (getHealth() <= 0) {
+            GameRegistrer.removeFromRegistery(this);
         }
     }
 }

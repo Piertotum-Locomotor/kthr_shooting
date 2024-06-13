@@ -75,4 +75,6 @@ public abstract class Character extends GameObject {
     }
 
     public abstract void shoot();
+
+    public abstract void collided(GameObject collidedWith);
 }

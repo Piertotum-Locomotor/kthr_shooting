@@ -1,6 +1,7 @@
 package gameobject;
 import java.awt.*;
 
+import GameRegistrer.GameRegistrer;
 import gameobject.character.Character;
 
 public class Bullet extends GameObject {
@@ -15,27 +16,27 @@ public class Bullet extends GameObject {
         setOffence(offence);
     }
 
-    Class<? extends Character> whomOwnedBy() {
+    public Class<? extends Character> whomOwnedBy() {
         return ownedBy;
     }
 
-    Class<? extends Character> whomDamageTo() {
+    public Class<? extends Character> whomDamageTo() {
         return damageTo;
     }
 
-    double getOffece() {
+    public double getOffence() {
         return offence;
     }
 
-    void setOwnedBy(Class<? extends Character> ownedBy) {
+    public void setOwnedBy(Class<? extends Character> ownedBy) {
         this.ownedBy = ownedBy;
     }
 
-    void setDamageTo(Class<? extends Character> damageTo) {
+    public void setDamageTo(Class<? extends Character> damageTo) {
         this.damageTo = damageTo;
     }
 
-    void setOffence(double offence) {
+    public void setOffence(double offence) {
         this.offence = offence;
     }
 
@@ -46,7 +47,12 @@ public class Bullet extends GameObject {
     }
 
     public void task() {
-            setTimer(0);
             move(getCoordinateX() + getVelocityX(), getCoordinateY() + getVelocityY());
+
+            if (getTimer() >= 60 * 60) {
+                setTimer(0);
+
+                GameRegistrer.removeFromRegistery(this);
+            }
     }
 }

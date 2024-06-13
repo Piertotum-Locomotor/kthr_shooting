@@ -11,7 +11,7 @@ import GameRegistrer.GameRegistrer;
 public class Player extends Character {
     private int remaining;
 
-    public Player(int x, int y, int size, Color color, String name, int bulletOffence, int bulletVelocityX, int bulletVelocityY, int shootInterval) {
+    public Player(int x, int y, int size, Color color, String name, int bulletOffence, int bulletVelocityX, int bulletVelocityY, int shootInterval, int remaining) {
         super(x, y, size, color, name, bulletOffence, bulletVelocityX, bulletVelocityY, shootInterval);
         setRemaining(remaining);
     }
@@ -29,6 +29,23 @@ public class Player extends Character {
         GameRegistrer.gameRegisterer(bullet);
     }
 
+    public void collided(GameObject collidedWith) {
+        if (collidedWith instanceof Bullet) {
+            Bullet collidedBullet = (Bullet)collidedWith;
+            if (collidedBullet.whomDamageTo() == Player.class) {
+                setRemaining(getRemaining() - 1);
+
+                // 弾の消去
+                GameRegistrer.removeFromRegistery(collidedBullet);
+            }
+        }
+
+        if (collidedWith instanceof Character) {
+            Character collidedCharacter = (Character)collidedWith;
+            if (collidedCharacter instanceof Enemy) setRemaining(getRemaining() - 1);
+        }
+    }
+
     public void draw(Graphics g) {
         g.setColor(super.getColor());
         g.fillRect(super.getCoordinateX() - super.getSize() / 2, super.getCoordinateY() - super.getSize() / 2, super.getSize(), super.getSize());
@@ -38,6 +55,10 @@ public class Player extends Character {
         if (getTimer() % getShootInterval() == 0 && getIsShooting()) {
             setTimer(0);
             shoot();
+        }
+
+        if (getRemaining() <= 0) {
+            //GameRegistrer.removeFromRegistery(this);
         }
     }
 }

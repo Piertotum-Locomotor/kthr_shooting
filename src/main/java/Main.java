@@ -4,16 +4,17 @@ import javax.swing.*;
 
 import GameRegistrer.GameRegistrer;
 import gameobject.GameObject;
+import gameobject.*;
 import gameobject.character.Character;
 import gameobject.character.enemy.*;
 import gameobject.character.player.Player;
+import util.util;
 
 import java.awt.*;
 import java.awt.event.*;
 
 
 public class Main {
-
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Shooting Game");
@@ -27,8 +28,8 @@ public class Main {
         frame.add(panel);
         frame.addKeyListener(panel);
 
-        GameRegistrer.gameRegisterer( new Player(10, 100, 10, Color.BLUE, "PLAYER", 10, 0, -10, 10) );
-        GameRegistrer.gameRegisterer( new Boss(500, 500, 20, Color.RED, "BOSS", 20, 0, 10, 15) );
+        GameRegistrer.gameRegisterer( new Player(10, 100, 10, Color.BLUE, "PLAYER", 10, 0, -10, 10, 3) );
+        GameRegistrer.gameRegisterer( new Boss(500, 500, 20, Color.RED, "BOSS", 20, 0, 10, 15, 100) );
     }
 }
 
@@ -36,6 +37,10 @@ public class Main {
 class GamePanel extends JPanel implements Runnable, KeyListener {
     Thread t;
     int frames;
+    JLabel label = new JLabel();
+    JLabel remainingLabel = new JLabel();
+    JLabel bossHPLabel = new JLabel();
+    
 
     long error = 0;  
     int fps = 60;  
@@ -48,6 +53,10 @@ class GamePanel extends JPanel implements Runnable, KeyListener {
         t = new Thread(this);
         t.start();
         frames = 0;
+
+        add(label);
+        add(remainingLabel);
+        add(bossHPLabel);
 
         addMouseMotionListener(new MouseAdapter() {
             @Override
@@ -64,22 +73,47 @@ class GamePanel extends JPanel implements Runnable, KeyListener {
         while(true) {
             oldTime = newTime;
 
-
             frames++;
+
+            label.setText("[DEBUG] GameObject Count: " + GameRegistrer.getObjects().size());
+
             for (int i = 0; i < GameRegistrer.getObjects().size(); i++) {
                 GameObject evaluating = GameRegistrer.getObjects().get(i);
     
                 evaluating.task();
                 evaluating.incrementTimer();
 
-                // Characterを扱っているなら
-                if (evaluating instanceof Character) {
-                    Character evalChara = (Character)evaluating;
-                    
+                // Playerを扱っているなら
+                if (evaluating instanceof Player) {
+                    Player evalPlayer = (Player)evaluating;
+                    remainingLabel.setText("Remaining: " + evalPlayer.getRemaining());
                 }
 
-                repaint();
+                // Bossを扱っているなら
+                if (evaluating instanceof Boss) {
+                    Boss evalBoss = (Boss)evaluating;
+                    bossHPLabel.setText("[DEBUG] Boss Health: " + evalBoss.getHealth());
+                }
+
+                // 衝突判定
+                for (int j = 0; j < GameRegistrer.getObjects().size(); j++) {
+                    if (i == j) continue;
+                    GameObject evaluating2 = GameRegistrer.getObjects().get(j);
+                    if (!(evaluating2 instanceof Character)) continue;
+
+                    // evaluatingがevaluating2に衝突
+                    if (util.dist(evaluating.getCoordinateX(), evaluating.getCoordinateY(), evaluating2.getCoordinateX(), evaluating2.getCoordinateY()) 
+                                < evaluating.getSize()/2 + evaluating2.getSize()/2) {
+                                    // evaluating2にダメージ
+                                    Character evalChara2 = (Character)evaluating2;
+                                    evalChara2.collided(evaluating);
+                    }
+                }
+
             }
+
+            revalidate();   //コンポーネント再有効化
+            repaint();  //再描画
 
 
 
@@ -122,6 +156,7 @@ class GamePanel extends JPanel implements Runnable, KeyListener {
             Player player;
             if (temp instanceof Player) {
                 player = (Player)temp;
+                player.setTimer(0);
                 player.setIsShooting(true);
             }
         }
