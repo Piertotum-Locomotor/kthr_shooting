@@ -4,7 +4,6 @@ import javax.swing.*;
 
 import GameRegistrer.GameRegistrer;
 import gameobject.GameObject;
-import gameobject.*;
 import gameobject.character.Character;
 import gameobject.character.enemy.*;
 import gameobject.character.player.Player;
