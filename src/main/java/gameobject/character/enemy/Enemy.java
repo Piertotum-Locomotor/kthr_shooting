@@ -33,7 +33,7 @@ abstract public class Enemy extends Character {
                 setHealth(getHealth() - (int)collidedBullet.getOffence());
 
                 // 弾の消去
-                GameRegistrer.removeFromRegistery(collidedBullet);
+                GameRegistrer.removeFromRegistry(collidedBullet);
             }
         }
     }

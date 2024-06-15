@@ -7,6 +7,7 @@ import gameobject.GameObject;
 import gameobject.character.Character;
 import gameobject.character.enemy.*;
 import gameobject.character.player.Player;
+import gameobject.ui.TextLabel;
 import util.util;
 
 import java.awt.*;
@@ -18,7 +19,7 @@ public class Main {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Shooting Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1000, 1000); // 仮のサイズ
+        frame.setSize(1000, 1000);
         frame.setVisible(true);
         frame.setResizable(false);
 
@@ -35,27 +36,19 @@ public class Main {
 
 class GamePanel extends JPanel implements Runnable, KeyListener {
     Thread t;
-    int frames;
-    JLabel label = new JLabel();
-    JLabel remainingLabel = new JLabel();
-    JLabel bossHPLabel = new JLabel();
-    
+    long frames;
 
-    long error = 0;  
-    int fps = 60;  
-    long idealSleep = (1000 << 16) / fps;  
-    long oldTime;  
-    long newTime = System.currentTimeMillis() << 16; 
+    long error = 0;
+    int fps = 60;
+    long idealSleep = (1000 << 16) / fps;
+    long oldTime;
+    long newTime = System.currentTimeMillis() << 16;
 
     public GamePanel() {
 
         t = new Thread(this);
         t.start();
         frames = 0;
-
-        add(label);
-        add(remainingLabel);
-        add(bossHPLabel);
 
         addMouseMotionListener(new MouseAdapter() {
             @Override
@@ -74,25 +67,11 @@ class GamePanel extends JPanel implements Runnable, KeyListener {
 
             frames++;
 
-            label.setText("[DEBUG] GameObject Count: " + GameRegistrer.getObjects().size());
-
             for (int i = 0; i < GameRegistrer.getObjects().size(); i++) {
                 GameObject evaluating = GameRegistrer.getObjects().get(i);
     
                 evaluating.task();
                 evaluating.incrementTimer();
-
-                // Playerを扱っているなら
-                if (evaluating instanceof Player) {
-                    Player evalPlayer = (Player)evaluating;
-                    remainingLabel.setText("Remaining: " + evalPlayer.getRemaining());
-                }
-
-                // Bossを扱っているなら
-                if (evaluating instanceof Boss) {
-                    Boss evalBoss = (Boss)evaluating;
-                    bossHPLabel.setText("[DEBUG] Boss Health: " + evalBoss.getHealth());
-                }
 
                 // 衝突判定
                 for (int j = 0; j < GameRegistrer.getObjects().size(); j++) {
@@ -117,7 +96,7 @@ class GamePanel extends JPanel implements Runnable, KeyListener {
 
 
 
-            newTime = System.currentTimeMillis() << 16;  
+            newTime = System.currentTimeMillis() << 16;
             long sleepTime = idealSleep - (newTime - oldTime) - error;
             if (sleepTime < 0x20000) sleepTime = 0x20000;
             oldTime = newTime;
@@ -135,9 +114,36 @@ class GamePanel extends JPanel implements Runnable, KeyListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        TextLabel remaining = new TextLabel("", getWidth() - 10, getHeight() - 10, 20, 0, 0, Color.BLACK, Font.BOLD, 1);
+        TextLabel gameObjectCount = new TextLabel("", 10, getHeight() - 10, 15, 0, 0, Color.BLACK, Font.PLAIN, 0);
+        TextLabel bossHealth = new TextLabel("", getWidth()/2, 20, 15, 0, 0, Color.BLACK, Font.PLAIN, 0.5);
+
         for (int i = 0; i < GameRegistrer.getObjects().size(); i++) {
-            GameRegistrer.getObjects().get(i).draw(g);
+            GameObject evaluating = GameRegistrer.getObjects().get(i);
+            // GameObject描画
+            evaluating.draw(g);
+
+            // 文字
+            g.setColor(Color.BLACK);
+            // Playerを扱っているなら
+            if (evaluating instanceof Player) {
+                Player evalPlayer = (Player)evaluating;
+
+                remaining.setStr("Remaining: " + evalPlayer.getRemaining());
+            }
+            // Bossを扱っているなら
+            if (evaluating instanceof Boss) {
+                Boss evalBoss = (Boss)evaluating;
+
+                bossHealth.setStr("[DEBUG] Boss Health: " + evalBoss.getHealth());
+            }
         }
+
+        gameObjectCount.setStr("[DEBUG] GameObject Count: " + GameRegistrer.getObjects().size());
+
+        remaining.draw(g);
+        gameObjectCount.draw(g);
+        bossHealth.draw(g);
     }
 
 

@@ -40,7 +40,6 @@ public class Bullet extends GameObject {
         this.offence = offence;
     }
 
-    //仮だよ
     public void draw(Graphics g) {
         g.setColor(super.getColor());
         g.fillOval(super.getCoordinateX() - super.getSize() / 2, super.getCoordinateY() - super.getSize() / 2, super.getSize(), super.getSize());
@@ -52,7 +51,7 @@ public class Bullet extends GameObject {
             if (getTimer() >= 60 * 60) {
                 setTimer(0);
 
-                GameRegistrer.removeFromRegistery(this);
+                GameRegistrer.removeFromRegistry(this);
             }
     }
 }

@@ -18,7 +18,6 @@ public class Boss extends Enemy {
         GameRegistrer.gameRegisterer(bullet);
     }
 
-    //仮だよ
     public void draw(Graphics g) {
         g.setColor(super.getColor());
         g.fillRect(super.getCoordinateX() - super.getSize() / 2, super.getCoordinateY() - super.getSize() / 2, super.getSize(), super.getSize());
@@ -37,7 +36,7 @@ public class Boss extends Enemy {
         
 
         if (getHealth() <= 0) {
-            GameRegistrer.removeFromRegistery(this);
+            GameRegistrer.removeFromRegistry(this);
         }
     }
 }

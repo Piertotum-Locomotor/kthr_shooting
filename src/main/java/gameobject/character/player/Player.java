@@ -36,7 +36,7 @@ public class Player extends Character {
                 setRemaining(getRemaining() - 1);
 
                 // 弾の消去
-                GameRegistrer.removeFromRegistery(collidedBullet);
+                GameRegistrer.removeFromRegistry(collidedBullet);
             }
         }
 

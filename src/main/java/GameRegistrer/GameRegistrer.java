@@ -11,7 +11,7 @@ public class GameRegistrer {
         objects.add(Instance);
     }
 
-    public static void removeFromRegistery(GameObject Instance) {
+    public static void removeFromRegistry(GameObject Instance) {
         objects.remove(Instance);
     }
 
