@@ -114,6 +114,7 @@ class GamePanel extends JPanel implements Runnable, KeyListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        // テキストラベル
         TextLabel remaining = new TextLabel("", getWidth() - 10, getHeight() - 10, 20, 0, 0, Color.BLACK, Font.BOLD, 1);
         TextLabel gameObjectCount = new TextLabel("", 10, getHeight() - 10, 15, 0, 0, Color.BLACK, Font.PLAIN, 0);
         TextLabel bossHealth = new TextLabel("", getWidth()/2, 20, 15, 0, 0, Color.BLACK, Font.PLAIN, 0.5);
@@ -123,24 +124,22 @@ class GamePanel extends JPanel implements Runnable, KeyListener {
             // GameObject描画
             evaluating.draw(g);
 
-            // 文字
-            g.setColor(Color.BLACK);
+            // テキストラベルの文字列
             // Playerを扱っているなら
             if (evaluating instanceof Player) {
                 Player evalPlayer = (Player)evaluating;
-
                 remaining.setStr("Remaining: " + evalPlayer.getRemaining());
             }
             // Bossを扱っているなら
             if (evaluating instanceof Boss) {
                 Boss evalBoss = (Boss)evaluating;
-
                 bossHealth.setStr("[DEBUG] Boss Health: " + evalBoss.getHealth());
             }
         }
 
         gameObjectCount.setStr("[DEBUG] GameObject Count: " + GameRegistrer.getObjects().size());
 
+        // テキストラベル描画
         remaining.draw(g);
         gameObjectCount.draw(g);
         bossHealth.draw(g);

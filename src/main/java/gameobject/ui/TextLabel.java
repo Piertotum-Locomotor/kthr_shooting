@@ -44,6 +44,8 @@ public class TextLabel extends GameObject {
 
     @Override
     public void draw(Graphics g) {
+        g.setColor(super.getColor());
+
         Font f = new Font(g.getFont().getName(), getFontStyle(), getSize());
         g.setFont(f);
 
