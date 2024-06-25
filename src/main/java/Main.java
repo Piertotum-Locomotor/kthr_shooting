@@ -19,7 +19,7 @@ public class Main {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Shooting Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1000, 1000);
+        frame.setSize(400, 600);
         frame.setVisible(true);
         frame.setResizable(false);
 
@@ -28,8 +28,8 @@ public class Main {
         frame.add(panel);
         frame.addKeyListener(panel);
 
-        GameRegistrer.gameRegisterer( new Player(10, 100, 10, Color.BLUE, "PLAYER", 10, 0, -10, 10, 3) );
-        GameRegistrer.gameRegisterer( new Boss(500, 500, 20, Color.RED, "BOSS", 20, 0, 10, 15, 100) );
+        GameRegistrer.gameRegisterer( new Player(200, 500, 10, Color.BLUE, "PLAYER", 10, 0, -10, 10, 3) );
+        GameRegistrer.gameRegisterer( new Boss(200, 100, 20, Color.RED, "BOSS", 20, 0, 10, 15, 100) );
     }
 }
 
