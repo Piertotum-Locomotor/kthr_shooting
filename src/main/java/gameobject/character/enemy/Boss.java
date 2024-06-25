@@ -18,7 +18,7 @@ public class Boss extends Enemy {
     public void shoot() {
         int bulletCount = 6; // 同心円状に発射する弾の数
         double angleStep = 360.0 / bulletCount;
-        int bulletSpeed = 6; // 弾の基本速度
+        double bulletSpeed = 6.0; // 弾の基本速度
 
         for (int i = 0; i < bulletCount; i++) {
             double angle = Math.toRadians(currentAngle + i * angleStep);
