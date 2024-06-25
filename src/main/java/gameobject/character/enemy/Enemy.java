@@ -13,7 +13,7 @@ abstract public class Enemy extends Character {
     //private Double velocityX;
     //private double velocityY;
 
-    public Enemy(int x, int y, int size, Color color, String name, double bulletOffence, int bulletVelocityX, int bulletVelocityY, int shootInterval, int health) {
+    public Enemy(int x, int y, int size, Color color, String name, double bulletOffence, double bulletVelocityX, double bulletVelocityY, int shootInterval, int health) {
         super(x, y, size, color, name, bulletOffence, bulletVelocityX, bulletVelocityY, shootInterval);
         setHealth(health);
     }

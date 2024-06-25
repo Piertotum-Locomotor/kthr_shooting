@@ -11,7 +11,7 @@ import GameRegistrer.GameRegistrer;
 public class Player extends Character {
     private int remaining;
 
-    public Player(int x, int y, int size, Color color, String name, int bulletOffence, int bulletVelocityX, int bulletVelocityY, int shootInterval, int remaining) {
+    public Player(int x, int y, int size, Color color, String name, int bulletOffence, double bulletVelocityX, double bulletVelocityY, int shootInterval, int remaining) {
         super(x, y, size, color, name, bulletOffence, bulletVelocityX, bulletVelocityY, shootInterval);
         setRemaining(remaining);
     }

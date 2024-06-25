@@ -1,4 +1,5 @@
 package gameobject;
+
 import java.awt.*;
 
 import GameRegistrer.GameRegistrer;
@@ -8,8 +9,9 @@ public class Bullet extends GameObject {
     private Class<? extends Character> ownedBy;
     private Class<? extends Character> damageTo;
     private double offence;
-    
-    public Bullet(int x, int y, int size, int velocityX, int velocityY, Color color, Class<? extends Character> ownedBy, Class<? extends Character> damageTo, double offence) {
+
+    public Bullet(int x, int y, int size, double velocityX, double velocityY, Color color,
+            Class<? extends Character> ownedBy, Class<? extends Character> damageTo, double offence) {
         super(x, y, size, velocityX, velocityY, color);
         setOwnedBy(ownedBy);
         setDamageTo(damageTo);
@@ -42,16 +44,17 @@ public class Bullet extends GameObject {
 
     public void draw(Graphics g) {
         g.setColor(super.getColor());
-        g.fillOval(super.getCoordinateX() - super.getSize() / 2, super.getCoordinateY() - super.getSize() / 2, super.getSize(), super.getSize());
+        g.fillOval(super.getCoordinateX() - super.getSize() / 2, super.getCoordinateY() - super.getSize() / 2,
+                super.getSize(), super.getSize());
     }
 
     public void task() {
-            move(getCoordinateX() + getVelocityX(), getCoordinateY() + getVelocityY());
+        move((int)(getCoordinateX() + getVelocityX()), (int)(getCoordinateY() + getVelocityY()));
 
-            if (getTimer() >= 60 * 60) {
-                setTimer(0);
+        if (getTimer() >= 60 * 60) {
+            setTimer(0);
 
-                GameRegistrer.removeFromRegistry(this);
-            }
+            GameRegistrer.removeFromRegistry(this);
+        }
     }
 }

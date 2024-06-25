@@ -7,12 +7,12 @@ public abstract class GameObject {
     private int coordinateY;
     private Boolean isAlive;
     private int size;
-    private int velocityX;
-    private int velocityY;
+    private double velocityX;
+    private double velocityY;
     private int timer;
     private Color color;
 
-    public GameObject(int x, int y, int size, int velocityX, int velocityY, Color color) {
+    public GameObject(int x, int y, int size, double velocityX, double velocityY, Color color) {
         setCoordinateX(x);
         setCoordinateY(y);
         setSize(size);
@@ -42,11 +42,11 @@ public abstract class GameObject {
         return size;
     }
 
-    public int getVelocityX() {
+    public double getVelocityX() {
         return velocityX;
     }
 
-    public int getVelocityY() {
+    public double getVelocityY() {
         return velocityY;
     }
 
@@ -70,11 +70,11 @@ public abstract class GameObject {
         this.size = size;
     }
 
-    public void setVelocityX(int velocityX) {
+    public void setVelocityX(double velocityX) {
         this.velocityX = velocityX;
     }
 
-    public void setVelocityY(int velocityY) {
+    public void setVelocityY(double velocityY) {
         this.velocityY = velocityY;
     }
 

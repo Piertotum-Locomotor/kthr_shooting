@@ -7,12 +7,12 @@ import java.awt.*;
 public abstract class Character extends GameObject {
     private String name;
     private double bulletOffence;
-    private int bulletVelocityX;
-    private int bulletVelocityY;
+    private double bulletVelocityX;
+    private double bulletVelocityY;
     private Boolean isShooting;
     private int shootInterval;
 
-    public Character(int x, int y, int size, Color color, String name, double bulletOffence, int bulletVelocityX, int bulletVelocityY, int shootInterval) {
+    public Character(int x, int y, int size, Color color, String name, double bulletOffence, double bulletVelocityX, double bulletVelocityY, int shootInterval) {
         super(x, y, size, 0, 0, color);
         setName(name);
         setBulletOffence(bulletOffence);
@@ -30,11 +30,11 @@ public abstract class Character extends GameObject {
         return bulletOffence;
     }
 
-    public int getBulletVelocityX(){
+    public double getBulletVelocityX(){
         return bulletVelocityX;
     }
 
-    public int getBulletVelocityY(){
+    public double getBulletVelocityY(){
         return bulletVelocityY;
     }
     
@@ -46,11 +46,11 @@ public abstract class Character extends GameObject {
         this.bulletOffence = bulletOffence;
     }
 
-    public void setBulletVelocityX(int bulletVelocityX){
+    public void setBulletVelocityX(double bulletVelocityX){
         this.bulletVelocityX = bulletVelocityX;
     }
 
-    public void setBulletVelocityY(int bulletVelocityY){
+    public void setBulletVelocityY(double bulletVelocityY){
         this.bulletVelocityY = bulletVelocityY;
     }
 

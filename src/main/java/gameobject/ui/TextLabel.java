@@ -11,7 +11,7 @@ public class TextLabel extends GameObject {
     private int fontStyle;
     private double leftOffset;
 
-    public TextLabel(String str, int x, int y, int size, int velocityX, int velocityY, Color color, int fontStyle, double leftOffset) {
+    public TextLabel(String str, int x, int y, int size, double velocityX, double velocityY, Color color, int fontStyle, double leftOffset) {
         super(x, y, size, velocityX, velocityY, color);
         setStr(str);
         setFontStyle(fontStyle);
