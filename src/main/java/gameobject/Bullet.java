@@ -48,7 +48,7 @@ public class Bullet extends GameObject {
     public void task() {
             move(getCoordinateX() + getVelocityX(), getCoordinateY() + getVelocityY());
 
-            if (getTimer() >= 60 * 60) {
+            if (getTimer() >= 60 * 15) {
                 setTimer(0);
 
                 GameRegistrer.removeFromRegistry(this);
