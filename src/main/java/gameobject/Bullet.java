@@ -51,8 +51,13 @@ public class Bullet extends GameObject {
     public void task() {
         move((int)(getCoordinateX() + getVelocityX()), (int)(getCoordinateY() + getVelocityY()));
 
+<<<<<<< HEAD
         if (getTimer() >= 60 * 60) {
             setTimer(0);
+=======
+            if (getTimer() >= 60 * 15) {
+                setTimer(0);
+>>>>>>> 87c88f0fbb5ba508accbc16aba039550c24e58e4
 
             GameRegistrer.removeFromRegistry(this);
         }
