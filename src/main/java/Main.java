@@ -1,17 +1,13 @@
-import javax.swing.JFrame;
-
-import javax.swing.*;
-
 import GameRegistrer.GameRegistrer;
 import gameobject.GameObject;
 import gameobject.character.Character;
 import gameobject.character.enemy.*;
 import gameobject.character.player.Player;
 import gameobject.ui.TextLabel;
-import util.util;
-
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
+import util.util;
 
 
 public class Main {

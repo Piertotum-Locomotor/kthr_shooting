@@ -1,18 +1,21 @@
 package gameobject.character.enemy;
 
+import GameRegistrer.GameRegistrer;
 import gameobject.Bullet;
 import gameobject.character.player.Player;
-
+import gameobject.ui.*;
 import java.awt.*;
-
-import GameRegistrer.GameRegistrer;
 
 public class Boss extends Enemy {
     private double currentAngle;
 
+    HPBar hpbar;
     public Boss(int x, int y, int size, Color color, String name, double bulletOffence, double bulletVelocityX, double bulletVelocityY, int shootInterval, int health) {
         super(x, y, size, color, name, bulletOffence, bulletVelocityX, bulletVelocityY, shootInterval, health);
         this.currentAngle = 0; // 初期角度を0に設定
+        
+        hpbar = new HPBar(0, 10, 100, Color.GREEN, getHealth());
+        GameRegistrer.gameRegisterer(hpbar);   
     }
 
     public void shoot() {
@@ -57,5 +60,7 @@ public class Boss extends Enemy {
         if (getHealth() <= 0) {
             GameRegistrer.removeFromRegistry(this);
         }
+
+        hpbar.setValue(getHealth());
     }
 }

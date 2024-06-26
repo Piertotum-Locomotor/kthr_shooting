@@ -1,9 +1,8 @@
 package gameobject.ui;
+import gameobject.GameObject;
 import java.awt.*;
 
-import gameobject.GameObject;
-
-class HPBar extends GameObject {
+public class HPBar extends GameObject {
     private double value;
 
     public HPBar(int x, int y, int size, Color color, double value) {
@@ -21,8 +20,9 @@ class HPBar extends GameObject {
     
     //仮だよ
     public void draw(Graphics g) {
+
         g.setColor(getColor());
-        g.fillRect(super.getCoordinateX() - super.getSize() / 2, super.getCoordinateY() - super.getSize() / 2, super.getSize(), super.getSize());
+        g.fillRect(super.getCoordinateX() - super.getSize() / 2, super.getCoordinateY() - super.getSize() / 2, (int)getValue(), super.getSize());
     }
 
     public void task() {
