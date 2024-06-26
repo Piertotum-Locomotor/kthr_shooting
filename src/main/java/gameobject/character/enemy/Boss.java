@@ -8,13 +8,13 @@ import java.awt.*;
 
 public class Boss extends Enemy {
     private double currentAngle;
-
     HPBar hpbar;
+
     public Boss(int x, int y, int size, Color color, String name, double bulletOffence, double bulletVelocityX, double bulletVelocityY, int shootInterval, int health) {
         super(x, y, size, color, name, bulletOffence, bulletVelocityX, bulletVelocityY, shootInterval, health);
         this.currentAngle = 0; // 初期角度を0に設定
         
-        hpbar = new HPBar(0, 10, 100, Color.GREEN, getHealth());
+        hpbar = new HPBar(0, 10, 400, Color.GREEN, this.getHealth());
         GameRegistrer.gameRegisterer(hpbar);   
     }
 
@@ -62,5 +62,8 @@ public class Boss extends Enemy {
         }
 
         hpbar.setValue(getHealth());
+         // HPバーの位置を更新
+        hpbar.setX(10);
+        hpbar.setY(10);
     }
 }

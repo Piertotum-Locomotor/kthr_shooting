@@ -4,10 +4,12 @@ import java.awt.*;
 
 public class HPBar extends GameObject {
     private double value;
+    private double maxValue;
 
     public HPBar(int x, int y, int size, Color color, double value) {
         super(x, y, size, 0, 0, color);
-        setValue(value);
+        this.value = value;
+        this.maxValue = value;
     }
 
     public double getValue() {
@@ -18,14 +20,23 @@ public class HPBar extends GameObject {
         this.value = value;
     }
     
+    public void setX(int x){
+        super.setCoordinateX(x);
+    }
+
+    public void setY(int y){
+        super.setCoordinateY(y);
+    }
+
     //仮だよ
     public void draw(Graphics g) {
 
         g.setColor(getColor());
-        g.fillRect(super.getCoordinateX() - super.getSize() / 2, super.getCoordinateY() - super.getSize() / 2, (int)getValue(), super.getSize());
+        int width = (int)((value/maxValue) * super.getSize());
+        g.fillRect(super.getCoordinateX(), super.getCoordinateY(), width, 10);
     }
 
     public void task() {
-        setSize((int)getValue());
-    }
+        //setSize((int)getValue());
+    }    
 }
