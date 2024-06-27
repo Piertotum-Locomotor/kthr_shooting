@@ -26,7 +26,7 @@ public class Main {
 
         GameRegistrer.gameRegisterer( new Player(200, 500, 10, Color.BLUE, "PLAYER", 10, 0, -10, 10, 3) );
         GameRegistrer.gameRegisterer( new Boss(200, 100, 20, Color.RED, "BOSS", 20, 0, 10, 15, 100) );
-        GameRegistrer.gameRegisterer( new Zako(200, 300, 12, Color.RED, "ZAKO", 20, 0, 10, 15, 100) );
+        GameRegistrer.gameRegisterer( new Zako(200, 300, 12, Color.RED, "ZAKO", 20, 0, 10, 15, 20) );
         
     }
 }
@@ -65,31 +65,36 @@ class GamePanel extends JPanel implements Runnable, KeyListener {
 
             frames++;
 
-            for (int i = 0; i < GameRegistrer.getObjects().size(); i++) {
-                GameObject evaluating = GameRegistrer.getObjects().get(i);
-    
-                evaluating.task();
-                evaluating.incrementTimer();
+            if (frames > 60) {
 
-                // 衝突判定
-                for (int j = 0; j < GameRegistrer.getObjects().size(); j++) {
-                    if (i == j) continue;
-                    GameObject evaluating2 = GameRegistrer.getObjects().get(j);
-                    if (!(evaluating2 instanceof Character)) continue;
+                for (int i = 0; i < GameRegistrer.getObjects().size(); i++) {
+                    GameObject evaluating = GameRegistrer.getObjects().get(i);
+        
+                    evaluating.task();
+                    evaluating.incrementTimer();
 
-                    // evaluatingがevaluating2に衝突
-                    if (util.dist(evaluating.getCoordinateX(), evaluating.getCoordinateY(), evaluating2.getCoordinateX(), evaluating2.getCoordinateY()) 
-                                < evaluating.getSize()/2 + evaluating2.getSize()/2) {
-                                    // evaluating2にダメージ
-                                    Character evalChara2 = (Character)evaluating2;
-                                    evalChara2.collided(evaluating);
+                    // 衝突判定
+                    for (int j = 0; j < GameRegistrer.getObjects().size(); j++) {
+                        if (i == j) continue;
+                        GameObject evaluating2 = GameRegistrer.getObjects().get(j);
+                        if (!(evaluating2 instanceof Character)) continue;
+
+                        // evaluatingがevaluating2に衝突
+                        if (util.dist(evaluating.getCoordinateX(), evaluating.getCoordinateY(), evaluating2.getCoordinateX(), evaluating2.getCoordinateY()) 
+                                    < evaluating.getSize()/2 + evaluating2.getSize()/2) {
+                                        // evaluating2にダメージ
+                                        Character evalChara2 = (Character)evaluating2;
+                                        evalChara2.collided(evaluating);
+                        }
                     }
+
                 }
 
             }
 
             revalidate();   //コンポーネント再有効化
             repaint();  //再描画
+
 
 
 

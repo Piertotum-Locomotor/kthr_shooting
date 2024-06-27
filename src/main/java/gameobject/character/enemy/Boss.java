@@ -14,7 +14,7 @@ public class Boss extends Enemy {
         super(x, y, size, color, name, bulletOffence, bulletVelocityX, bulletVelocityY, shootInterval, health);
         this.currentAngle = 0; // 初期角度を0に設定
         
-        hpbar = new HPBar(0, 10, 400, Color.GREEN, this.getHealth());
+        hpbar = new HPBar(10, 10, 380, Color.GREEN, this.getHealth());
         GameRegistrer.gameRegisterer(hpbar);   
     }
 
@@ -59,11 +59,9 @@ public class Boss extends Enemy {
 
         if (getHealth() <= 0) {
             GameRegistrer.removeFromRegistry(this);
+            GameRegistrer.removeFromRegistry(hpbar);
         }
 
         hpbar.setValue(getHealth());
-         // HPバーの位置を更新
-        hpbar.setCoordinateX(10);
-        hpbar.setCoordinateY(10);
     }
 }

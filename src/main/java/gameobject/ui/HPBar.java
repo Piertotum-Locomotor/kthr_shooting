@@ -8,19 +8,26 @@ public class HPBar extends GameObject {
 
     public HPBar(int x, int y, int size, Color color, double value) {
         super(x, y, size, 0, 0, color);
-        this.value = value;
-        this.maxValue = value;
+        setValue(value);
+        setMaxValue(value);
     }
 
     public double getValue() {
         return value;
     }
 
+    public double getMaxValue() {
+        return maxValue;
+    }
+
     public void setValue(double value) {
         this.value = value;
     }
+
+    public void setMaxValue(double maxValue) {
+        this.maxValue = maxValue;
+    }
     
-    //仮だよ
     public void draw(Graphics g) {
 
         g.setColor(getColor());
@@ -29,6 +36,5 @@ public class HPBar extends GameObject {
     }
 
     public void task() {
-        //setSize((int)getValue());
     }    
 }

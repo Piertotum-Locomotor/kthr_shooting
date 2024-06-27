@@ -11,7 +11,7 @@ public class Zako extends Enemy {
 
     public Zako(int x, int y, int size, Color color, String name, double bulletOffence, double bulletVelocityX, double bulletVelocityY, int shootInterval, int health) {
          super(x, y, size, color, name, bulletOffence, bulletVelocityX, bulletVelocityY, shootInterval, health);
-        hpBar = new HPBar(x, y-size/2-10, 40, Color.GREEN, health);
+        hpBar = new HPBar(x - 20, y - size/2 - 10, 40, Color.GREEN, health);
         GameRegistrer.gameRegisterer(hpBar);
         }
 
@@ -41,10 +41,10 @@ public class Zako extends Enemy {
         if (getHealth() <= 0) {
             GameRegistrer.removeFromRegistry(this);
             GameRegistrer.removeFromRegistry(hpBar);
-        } else {
-            hpBar.setValue(getHealth());
-            hpBar.setCoordinateX(getCoordinateX() - hpBar.getSize() / 2);
-            hpBar.setCoordinateY(getCoordinateY() - getSize() / 2 - 10);
         }
+
+        hpBar.setValue(getHealth());
+        hpBar.setCoordinateX(getCoordinateX() - hpBar.getSize() / 2);
+        hpBar.setCoordinateY(getCoordinateY() - getSize() / 2 - 10);
     }
 }
