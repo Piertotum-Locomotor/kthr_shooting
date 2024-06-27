@@ -26,6 +26,8 @@ public class Main {
 
         GameRegistrer.gameRegisterer( new Player(200, 500, 10, Color.BLUE, "PLAYER", 10, 0, -10, 10, 3) );
         GameRegistrer.gameRegisterer( new Boss(200, 100, 20, Color.RED, "BOSS", 20, 0, 10, 15, 100) );
+        GameRegistrer.gameRegisterer( new Zako(200, 300, 12, Color.RED, "ZAKO", 20, 0, 10, 15, 100) );
+        
     }
 }
 

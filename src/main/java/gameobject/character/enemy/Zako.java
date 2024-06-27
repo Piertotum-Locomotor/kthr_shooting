@@ -1,17 +1,19 @@
 package gameobject.character.enemy;
 
+import GameRegistrer.GameRegistrer;
 import gameobject.Bullet;
 import gameobject.character.player.Player;
-
+import gameobject.ui.HPBar;
 import java.awt.*;
 
-import GameRegistrer.GameRegistrer;
-
 public class Zako extends Enemy {
+    private HPBar hpBar;
 
     public Zako(int x, int y, int size, Color color, String name, double bulletOffence, double bulletVelocityX, double bulletVelocityY, int shootInterval, int health) {
-        super(x, y, size, color, name, bulletOffence, bulletVelocityX, bulletVelocityY, shootInterval, health);
-    }
+         super(x, y, size, color, name, bulletOffence, bulletVelocityX, bulletVelocityY, shootInterval, health);
+        hpBar = new HPBar(x, y-size/2-10, 40, Color.GREEN, health);
+        GameRegistrer.gameRegisterer(hpBar);
+        }
 
     public void shoot() {
         Bullet bullet = new Bullet(super.getCoordinateX(), super.getCoordinateY(), super.getSize(), super.getBulletVelocityX(), super.getBulletVelocityY(), super.getColor(), Zako.class, Player.class, super.getBulletOffence());
@@ -21,6 +23,7 @@ public class Zako extends Enemy {
     public void draw(Graphics g) {
         g.setColor(super.getColor());
         g.fillRect(super.getCoordinateX() - super.getSize() / 2, super.getCoordinateY() - super.getSize() / 2, super.getSize(), super.getSize());
+        hpBar.draw(g);
     }
     
     public void task() {
@@ -37,6 +40,11 @@ public class Zako extends Enemy {
 
         if (getHealth() <= 0) {
             GameRegistrer.removeFromRegistry(this);
+            GameRegistrer.removeFromRegistry(hpBar);
+        } else {
+            hpBar.setValue(getHealth());
+            hpBar.setCoordinateX(getCoordinateX() - hpBar.getSize() / 2);
+            hpBar.setCoordinateY(getCoordinateY() - getSize() / 2 - 10);
         }
     }
 }

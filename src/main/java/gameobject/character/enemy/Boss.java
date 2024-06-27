@@ -63,7 +63,7 @@ public class Boss extends Enemy {
 
         hpbar.setValue(getHealth());
          // HPバーの位置を更新
-        hpbar.setX(10);
-        hpbar.setY(10);
+        hpbar.setCoordinateX(10);
+        hpbar.setCoordinateY(10);
     }
 }

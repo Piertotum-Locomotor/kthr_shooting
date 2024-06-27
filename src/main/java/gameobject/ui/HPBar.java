@@ -20,14 +20,6 @@ public class HPBar extends GameObject {
         this.value = value;
     }
     
-    public void setX(int x){
-        super.setCoordinateX(x);
-    }
-
-    public void setY(int y){
-        super.setCoordinateY(y);
-    }
-
     //仮だよ
     public void draw(Graphics g) {
 
