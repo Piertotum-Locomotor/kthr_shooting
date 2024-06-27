@@ -26,7 +26,8 @@ public class Main {
 
         GameRegistrer.gameRegisterer( new Player(200, 500, 10, Color.BLUE, "PLAYER", 10, 0, -10, 10, 3) );
         GameRegistrer.gameRegisterer( new Boss(200, 100, 20, Color.RED, "BOSS", 20, 0, 10, 15, 100) );
-        GameRegistrer.gameRegisterer( new Zako(200, 300, 12, Color.RED, "ZAKO", 20, 0, 10, 15, 20) );
+        GameRegistrer.gameRegisterer( new Zako(100, 300, 12, Color.RED, "ZAKO", 5, 5, 8, 30, 20) );
+        GameRegistrer.gameRegisterer( new Zako(300, 300, 12, Color.RED, "ZAKO", 5, -5, 8, 30, 20) );
         
     }
 }
@@ -119,7 +120,7 @@ class GamePanel extends JPanel implements Runnable, KeyListener {
 
         // テキストラベル
         TextLabel remaining = new TextLabel("", getWidth() - 10, getHeight() - 10, 20, 0, 0, Color.BLACK, Font.BOLD, 1);
-        TextLabel gameObjectCount = new TextLabel("", 10, getHeight() - 10, 15, 0, 0, Color.BLACK, Font.PLAIN, 0);
+        TextLabel gameObjectCount = new TextLabel("", 10, getHeight() - 10, 10, 0, 0, Color.BLACK, Font.PLAIN, 0);
         TextLabel bossHealth = new TextLabel("", getWidth()/2, 20, 15, 0, 0, Color.BLACK, Font.PLAIN, 0.5);
 
         for (int i = 0; i < GameRegistrer.getObjects().size(); i++) {

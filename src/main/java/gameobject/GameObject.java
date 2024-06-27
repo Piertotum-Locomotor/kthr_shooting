@@ -107,6 +107,23 @@ public abstract class GameObject {
         setCoordinateY(newY);
     }
 
+    public void moveLiner(int destinationX, int destinationY) {
+        int dx = destinationX - getCoordinateX();
+        int dy = destinationY - getCoordinateY();
+        double distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance > 0) {
+            double speedX = (double) (dx / distance * 2);
+            double speedY = (double) (dy / distance * 2);
+
+            setCoordinateX((int)(getCoordinateX() + speedX));
+            setCoordinateY((int)(getCoordinateY() + speedY));
+            if (Math.abs(dx) < 1 && Math.abs(dy) < 1) {
+                setCoordinateX(destinationX);
+                setCoordinateY(destinationY);
+            }
+        }
+    }
+
     abstract public void draw(Graphics g);
 
     abstract public void task();

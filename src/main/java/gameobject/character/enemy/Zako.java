@@ -30,13 +30,15 @@ public class Zako extends Enemy {
         setIsShooting(true);
 
         if (getTimer() % getShootInterval() == 0) {
-            setTimer(0);
 
             if (getIsShooting()) {
                 shoot();
             }
         }
 
+        if (getTimer() >= 60 * 3) {
+            super.moveLiner(100, 100);
+        }
 
         if (getHealth() <= 0) {
             GameRegistrer.removeFromRegistry(this);
